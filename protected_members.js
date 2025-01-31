@@ -1,6 +1,6 @@
 function BaseClass(__prot = undefined) {
     __prot = __prot ?? Symbol();
-    self = {
+    let self = {
         withFoo: (a, b) => {
             return self[__prot].foo(a, b);
         },
@@ -16,7 +16,7 @@ function BaseClass(__prot = undefined) {
 
 function DerivedClass(c, __prot = undefined) {
     __prot = __prot ?? Symbol();
-    self = BaseClass(__prot);
+    let self = BaseClass(__prot);
     self[__prot].foo = (a, b) => {
         return a + b * c;
     }
